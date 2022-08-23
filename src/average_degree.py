@@ -13,8 +13,12 @@ def main(inputFile, outputFile):
 
     print('Input file is: ', inputFile)
     print('Output file is: ', outputFile)
-
-    # Write 
+    """
+    What you'd need to do:
+    - Write logic to pull tweets from input file
+    - Write logic to process tweets and calculate the average degree of hashtags
+    - Write results to outPutFile
+    """
     
 
 if __name__ == "__main__":
