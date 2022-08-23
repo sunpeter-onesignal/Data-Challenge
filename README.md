@@ -1,4 +1,4 @@
-Insight Data Engineering - Coding Challenge
+Data Challenge
 ===========================================================
 
 # Table of Contents
@@ -413,13 +413,13 @@ The output should be a file in the `tweet_output` directory named `output.txt` t
 ## Collecting tweets from the Twitter API
 [Back to Table of Contents](README.md#table-of-contents)
 
-Ideally, the updates of the average degree of a Twitter hashtag graph as each tweet arrives would be connected to the Twitter streaming API and would add new tweets to the end of `tweets.txt`.  However, connecting to the API requires more system specific "dev ops" work, which isn't the primary focus for data engineers.  Instead, you should simply assume that each new line of the text file corresponds to a new tweet and design your program to handle a text file with a large number of tweets.  Your program should output the results to a text file named `output.txt` in the `tweet_output` directory.
+Ideally, the updates of the average degree of a Twitter hashtag graph as each tweet arrives would be connected to the Twitter streaming API and would add new tweets to the end of `tweets.txt`.  However, connecting to the API requires more system specific "dev ops" work, which isn't the primary focus for people working in analytics/data engineering.  Instead, you should simply assume that each new line of the text file corresponds to a new tweet and design your program to handle a text file with a large number of tweets.  Your program should output the results to a text file named `output.txt` in the `tweet_output` directory.
 
 
 ## Writing clean, scalable, and well-tested code  
 [Back to Table of Contents](README.md#table-of-contents)
 
-As a data engineer, it’s important that you write clean, well-documented code that scales for large amounts of data.  For this reason, it’s important to ensure that your solution works well for a huge number of tweets, rather than just the simple examples above.  For example, your solution should be able to account for a large number of tweets coming in a short period of time, and need to keep up with the input (i.e. need to process a minute of tweets in less than a minute).  It's also important to use software engineering best practices like unit tests, especially since public data is not clean and predictable.  For more details about the implementation, please refer to the FAQ below or email us at cc@insightdataengineering.com
+It’s important that you write clean, well-documented code that scales for large amounts of data.  For this reason, it’s important to ensure that your solution works well for a huge number of tweets, rather than just the simple examples above.  For example, your solution should be able to account for a large number of tweets coming in a short period of time, and need to keep up with the input (i.e. need to process a minute of tweets in less than a minute).  It's also important to use software engineering best practices like unit tests, especially since public data is not clean and predictable.  For more details about the implementation, please refer to the FAQ below or reach out via email
 
 You may write your solution in any mainstream programming language such as C, C++, C#, Clojure, Erlang, Go, Haskell, Java, Python, Ruby, or Scala - then submit a link to a Github repo with your source code.  In addition to the source code, the top-most directory of your repo must include the `tweet_input` and `tweet_output` directories, and a shell script named `run.sh` that compiles and runs the program(s) that implement these features.  If your solution requires additional libraries, environments, or dependencies, you must specify these in your README documentation.  See the figure below for the required structure of the top-most directory in your repo, or simply clone this repo.
 
@@ -433,7 +433,7 @@ Alternatively, here is example output of the `tree` command:
 	├── README.md 
 	├── run.sh
 	├── src
-	│   └── average_degree.java
+	│   └── average_degree.py
 	├── tweet_input
 	│   └── tweets.txt
 	├── tweet_output
@@ -452,7 +452,7 @@ Alternatively, here is example output of the `tree` command:
 	            └── tweet_output
 	                └── output.txt
 
-The contents of `src` do not have to contain a single file called "average_degree.java", you are free to include one or more files and name them as you wish.  
+The contents of `src` do not have to contain a single file called "average_degree.py", you are free to include one or more files and name them as you wish.  
 
 ## Testing your directory structure and output format
 [Back to Table of Contents](README.md#table-of-contents)
@@ -480,15 +480,12 @@ on success
 
 One test has been provided as a way to check your formatting and simulate how we will be running tests when you submit your solution. We urge you to write your own additional tests here as well as for your own programming language. `run_tests.sh` should alert you if the directory structure is incorrect. 
 
-  **Your submission must pass at least the provided test in order to pass the coding challenge**.  
+  **Your submission must pass at least the provided test in order to pass the challenge**.  
 
 ## FAQ
 [Back to Table of Contents](README.md#table-of-contents)
 
-Here are some common questions we've received.  If you have additional questions, please email cc@insightdataengineering.com and we'll answer your questions as quickly as we can.
-
-* *Which Github link should I submit?*  
-You should submit the URL for the top-level root of your repository.  For example, this repo would be submitted by copying the URL `https://github.com/InsightDataScience/my-cc-example` into the appropriate field on the application.  Please do NOT try to submit your coding challenge using a pull request, which will make your source code publicly available.  
+Here are some common questions we've received.  If you have additional questions, please reach out via email.
 
 * *Do I need a private Github repo?*  
 No, you may use a public repo, there is no need to purchase a private repo.  You may also submit a link to a Bitbucket repo if you prefer.
@@ -500,7 +497,7 @@ Yes, there is an example input with roughly 10,000 tweets in the `data-gen` dire
 While you may use any programming language to complete the challenge, it's important that your implementation scales to handle large amounts of data.  Many applicants have found that R is unable to process data in a scalable fashion, so it may be more practical to use another language.  
 
 * *May I use distributed technologies like Hadoop or Spark?*  
-While you're welcome to use any language or technology, it will be tested on a single machine so there may not be a significant benefit to using these technologies prior to the program.  With that said, learning distributed systems is a valuable skill for all data engineers.
+While you're welcome to use any language or technology, it will be tested on a single machine so there may not be a significant benefit to using these technologies prior to the program.
 
 * *What sort of system should I use to run my program on (Windows, Linux, Mac)?*  
 You may write your solution on any system, but your code should be portable and work on all systems.  In particular, your code must be able to run on either Unix or Linux, as that's the system that will be used for testing.  This means that you must submit a working `run.sh` script.  Linux machines are the industry standard for most data engineering companies, so it is helpful to be familiar with this.  If you're currently using Windows, we recommend using tools like Cygwin or Docker,  or a free online IDE such as Cloud9 (c9.io).  
@@ -511,20 +508,12 @@ Hashtags must be identical to be the same.  Specifically, you should treat hasht
 * *What should I do with tweets that don't have at least two hashtags?*  
 These tweets still need to be processed, which may evict older tweets from the 60-second window that affects the graph, but they will not lead to new nodes or edges in the graph.  Tweets with only one hashtag should NOT create nodes.  
 
-* *Can I use pre-built packages, modules, or libraries?*   
-This coding challenge can be completed without any "exotic" packages.  While you may use publicly available packages, modules, or libraries, you must document any dependencies in your accompanying `README` file.  When we review your submission, we will download these libraries and attempt to run your program.  If you do use a package, you should always ensure that the module you're using works efficiently for the specific use-case in the challenge, since many libraries are not designed for large amounts of data.
-
-* *Will you email me if my code doesn't run?*   
-Unfortunately, we receive hundreds of submissions in a very short time and are unable to email individuals if code doesn't compile or run.  This is why it's so important to document any dependencies you have, as described in the previous question.  We will do everything we can to properly test your code, but this requires good documentation.  More so, we have provided a test suite so you can confirm that your directory structure is correct.
-
-* *Do I need to use multi-threading?*   
-No, your solution doesn't necessarily need to include multi-threading - there are many solutions that don't require multiple threads/cores or any distributed systems, but instead use efficient data structures.  
 
 * *Do I need to account for an updating `tweets.txt` file?*   
-No, your solution doesn't have to re-process `tweets.txt`.  Instead, it should be designed to handle a very large input size.  If you were doing this project as a data engineer in industry, you would probably use a scheduler to run your program daily in batches, but this is beyond the scope of this challenge.  
+No, your solution doesn't have to re-process `tweets.txt`.  Instead, it should be designed to handle a very large input size.  If you were doing this p, you would probably use a scheduler to run your program daily in batches, but this is beyond the scope of this challenge.  
 
 * *What should the format of the output be?*  
-In order to be tested correctly, you must use the format described above.  You can ensure that you have the correct format by using the testing suite we've included.  If you are still unable to get the correct format from the messages in the suite, please email us at cc@insightdataengineering.com.
+In order to be tested correctly, you must use the format described above.  You can ensure that you have the correct format by using the testing suite we've included.  If you are still unable to get the correct format from the messages in the suite, please email us.
 
 * *What should the precision of the average be?*  
 The precision of the average should be truncated to two digits after the decimal place (e.g. 5/3 should be outputted as 1.66).  
@@ -563,7 +552,4 @@ Yes, you can use what ever tools you want -  as long as your `run.sh` script cor
 You can put any text file you want in the directory.  In fact, this could be quite helpful for testing your solutions.
 
 * *How will the coding challenge be evaluated?*  
-Generally, we will evaluate your coding challenge with a testing suite that provides a variety of input tweets and checks the corresponding output.  This suite will attempt to use your `run.sh` and is fairly tolerant to different runtime environments.  Of course, there are many aspects (e.g. clean code, documentation) that cannot be tested by our suite, so each submission will also be reviewed manually by a person. 
-
-* *How long will it take for me to hear back from you about my submission?*  
-We receive hundreds of submissions and try to evaluate them all in a timely manner.  We try to get back to all applicants within two or three weeks of submission, but if you have a specific deadline that requires expedited review, you may email us at cc@insightdataengineering.com.  
+Generally, we will evaluate your submission with a testing suite that provides a variety of input tweets and checks the corresponding output.  This suite will attempt to use your `run.sh` and is fairly tolerant to different runtime environments.  Of course, there are many aspects (e.g. clean code, documentation) that cannot be tested by our suite, so each submission will also be reviewed manually by a person. 
